@@ -1,0 +1,141 @@
+:root {
+	/* Violet Void (extract from nvim/.config/nvim/lua/violet-void/colors/violet-void.lua) */
+	--base00: #0f0f0f;
+	--base01: #191919;
+	--base02: #212121;
+	--base03: #414141;
+	--base04: #6c6c75;
+	--base05: #f0f0f5;
+	--base06: #f6f6fb;
+	--base07: #ffffff;
+	--base08: #ff004b;
+	--base09: #ff7c7e;
+	--base0A: #7c60d1;
+	--base0B: #42ff97;
+	--base0C: #00fff9;
+	--base0D: #29adff;
+	--base0E: #fd7cff;
+	--base0F: #fd0098;
+
+	--tridactyl-fg: var(--base05);
+	--tridactyl-bg: var(--base00);
+	--tridactyl-url-fg: var(--base0D);
+	--tridactyl-url-bg: var(--base00);
+	--tridactyl-highlight-box-bg: var(--base0B);
+	--tridactyl-highlight-box-fg: var(--base00);
+
+	--tridactyl-hintspan-fg: var(--base00) !important;
+	--tridactyl-hintspan-bg: var(--base0A) !important;
+
+	--tridactyl-hint-active-fg: none;
+	--tridactyl-hint-active-bg: none;
+	--tridactyl-hint-active-outline: none;
+	--tridactyl-hint-bg: none;
+	--tridactyl-hint-outline: none;
+}
+
+#command-line-holder {
+	order: 1;
+	border: 2px solid var(--base0B);
+	color: var(--tridactyl-bg);
+}
+
+#tridactyl-input {
+	padding: 1rem;
+	color: var(--tridactyl-fg);
+	width: 90%;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	background: var(--tridactyl-bg);
+	padding-left: unset;
+}
+
+#completions table {
+	font-size: 0.8rem;
+	font-weight: 200;
+	border-spacing: 0;
+	table-layout: fixed;
+	padding: 1rem;
+}
+
+#completions > div {
+	max-height: calc(20 * var(--option-height));
+	min-height: calc(10 * var(--option-height));
+}
+
+#completions {
+	--option-height: 1.4em;
+	color: var(--tridactyl-fg);
+	background: var(--tridactyl-bg);
+	display: inline-block;
+	font-size: unset;
+	font-weight: 200;
+	overflow: hidden;
+	width: 100%;
+	border-top: unset;
+	order: 2;
+}
+
+#completions .HistoryCompletionSource,
+#completions .BmarkCompletionSource {
+	max-height: unset;
+	min-height: unset;
+}
+
+#completions .HistoryCompletionSource table,
+#completions .BufferCompletionSource table {
+	width: 100%;
+	font-size: 9pt;
+	border-spacing: 0;
+	table-layout: fixed;
+}
+
+#completions table tr td.prefix,
+#completions table tr td.privatewindow,
+#completions table tr td.container,
+#completions table tr td.icon {
+	display: none;
+}
+
+#completions table tr .title {
+	width: 50%;
+}
+
+#completions table tr {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#completions .sectionHeader {
+	background: unset;
+	font-weight: 200;
+	border-bottom: unset;
+	padding: 1rem !important;
+	padding-left: unset;
+	padding-bottom: 0.2rem;
+}
+
+#cmdline_iframe {
+	position: fixed !important;
+	top: 25% !important;
+	left: 10% !important;
+	z-index: 2147483647 !important;
+	width: 80% !important;
+	box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px !important;
+}
+
+.TridactylStatusIndicator {
+	position: fixed !important;
+	bottom: 0 !important;
+	background: var(--tridactyl-bg) !important;
+	border: 1px solid var(--base0B) !important;
+	font-size: 12pt !important;
+	padding: 0.8ex !important;
+}
+
+#completions .focused,
+#completions .focused .url {
+	background: var(--base0B);
+	color: var(--base00);
+}
