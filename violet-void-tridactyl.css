@@ -1,3 +1,57 @@
+/* Modern CSS: @layer for cascade control */
+@layer violet-void.reset, violet-void.variables, violet-void.base, violet-void.components;
+
+/* Modern CSS: @property for animatable custom properties */
+@property --tridactyl-hintspan-bg {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: #7c60d1;
+}
+
+@property --tridactyl-highlight-box-bg {
+	syntax: '<color>';
+	inherits: true;
+	initial-value: #42ff97;
+}
+
+/* Modern CSS: :has() selector for hint styling */
+@layer violet-void.components {
+	/* Style command line when it has focus */
+	#command-line-holder:has(#tridactyl-input:focus) {
+		border-color: var(--base0E);
+	}
+	
+	/* Highlight completions when they have focused items */
+	#completions:has(.focused) {
+		border-left: 2px solid var(--base0E);
+	}
+	
+	/* Style status indicator based on active state */
+	.TridactylStatusIndicator:has(.active) {
+		border-color: var(--base0B);
+	}
+}
+
+/* Accessibility: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+	
+	#cmdline_iframe {
+		transition: none !important;
+	}
+	
+	.TridactylStatusIndicator {
+		transition: none !important;
+	}
+}
+
 :root {
 	/* Violet Void (extract from nvim/.config/nvim/lua/violet-void/colors/violet-void.lua) */
 	--base00: #0f0f0f;

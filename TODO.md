@@ -2,20 +2,20 @@
 
 ## 🔥 High Priority
 
-- [ ] **Modern CSS Features**
-  - Add `@layer` for cascade control
-  - Add `@property` for animatable vars
-  - Add `:has()` for hint styling
+- [x] **Modern CSS Features** ✅ 2026-03-15
+  - Added `@layer` for cascade control
+  - Added `@property` for animatable vars
+  - Added `:has()` for hint styling
 
-- [ ] **Accessibility**
-  - Add `prefers-reduced-motion` media query
-  - Improve hint contrast
+- [x] **Accessibility** ✅ 2026-03-15
+  - Added `prefers-reduced-motion` media query
+  - Improved hint contrast (using base16 colors)
 
 ## 🟡 Medium Priority
 
-- [ ] **Palette Sync**
+- [x] **Palette Sync** ✅ 2026-03-15
   - Already using base16 naming ✓
-  - Verify all colors match ecosystem
+  - Verified colors match ecosystem
 
 - [ ] **Feature Coverage**
   - Command line styling
@@ -32,4 +32,4 @@
 ---
 
 *Format: Pure CSS with custom properties (no build)*
-*Last updated: 2026-02-27*
+*Last updated: 2026-03-15*
