@@ -1,5 +1,5 @@
 /* Modern CSS: @layer for cascade control */
-@layer violet-void.reset, violet-void.variables, violet-void.base, violet-void.components;
+@layer violet-void.reset, violet-void.variables, violet-void.base, violet-void.components, violet-void.utilities;
 
 /* Modern CSS: @property for animatable custom properties */
 @property --tridactyl-hintspan-bg {
@@ -29,6 +29,260 @@
 	/* Style status indicator based on active state */
 	.TridactylStatusIndicator:has(.active) {
 		border-color: var(--base0B);
+	}
+}
+
+/* Feature Coverage: Command line styling */
+@layer violet-void.components {
+	#command-line-holder {
+		order: 1;
+		border: 2px solid var(--base0B);
+		color: var(--tridactyl-bg);
+		background: var(--base01);
+		border-radius: 8px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	}
+	
+	#tridactyl-input {
+		padding: 1rem;
+		color: var(--tridactyl-fg);
+		width: 90%;
+		font-size: 1.5rem;
+		line-height: 1.5;
+		background: var(--tridactyl-bg);
+		padding-left: unset;
+		border: none;
+		outline: none;
+		font-family: monospace;
+	}
+	
+	#tridactyl-input:focus {
+		background: var(--base01);
+	}
+	
+	#tridactyl-input::placeholder {
+		color: var(--base04);
+		opacity: 0.7;
+	}
+}
+
+/* Feature Coverage: Hint styling */
+@layer violet-void.components {
+	/* Hint container */
+	#tridactyl-hint {
+		font-family: monospace;
+		font-size: 14px;
+		font-weight: 600;
+	}
+	
+	/* Active hint styling */
+	.TridactylHintActive {
+		background: var(--base0E) !important;
+		color: var(--base00) !important;
+		border-radius: 2px;
+		padding: 0 4px;
+	}
+	
+	/* Hint markers */
+	span.TridactylHint {
+		background: var(--base0A) !important;
+		color: var(--base00) !important;
+		border: none !important;
+		border-radius: 3px;
+		padding: 2px 6px;
+		margin: 0 2px;
+		font-size: 12px;
+		font-weight: 700;
+		text-transform: uppercase;
+		opacity: 0.9;
+	}
+	
+	/* Hint focus state */
+	.TridactylHint:focus,
+	.TridactylHintActive:focus {
+		outline: 2px solid var(--base0C);
+		outline-offset: 2px;
+	}
+}
+
+/* Feature Coverage: Completion popup */
+@layer violet-void.components {
+	#completions {
+		--option-height: 1.4em;
+		color: var(--tridactyl-fg);
+		background: var(--tridactyl-bg);
+		display: inline-block;
+		font-size: unset;
+		font-weight: 200;
+		overflow: hidden;
+		width: 100%;
+		border-top: unset;
+		order: 2;
+		border-radius: 0 0 8px 8px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	}
+	
+	#completions table {
+		font-size: 0.8rem;
+		font-weight: 200;
+		border-spacing: 0;
+		table-layout: fixed;
+		padding: 1rem;
+		width: 100%;
+	}
+	
+	#completions > div {
+		max-height: calc(20 * var(--option-height));
+		min-height: calc(10 * var(--option-height));
+	}
+	
+	#completions .HistoryCompletionSource,
+	#completions .BmarkCompletionSource {
+		max-height: unset;
+		min-height: unset;
+	}
+	
+	#completions .HistoryCompletionSource table,
+	#completions .BufferCompletionSource table {
+		width: 100%;
+		font-size: 9pt;
+		border-spacing: 0;
+		table-layout: fixed;
+	}
+	
+	#completions table tr td.prefix,
+	#completions table tr td.privatewindow,
+	#completions table tr td.container,
+	#completions table tr td.icon {
+		display: none;
+	}
+	
+	#completions table tr .title {
+		width: 50%;
+	}
+	
+	#completions table tr {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	#completions .sectionHeader {
+		background: unset;
+		font-weight: 200;
+		border-bottom: unset;
+		padding: 1rem !important;
+		padding-left: unset;
+		padding-bottom: 0.2rem;
+		color: var(--base0A);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		font-size: 0.75rem;
+	}
+	
+	/* Focused/completed item */
+	#completions .focused,
+	#completions .focused .url {
+		background: var(--base0B);
+		color: var(--base00);
+	}
+	
+	/* Hover state */
+	#completions table tr:hover td {
+		background: var(--base02);
+	}
+	
+	/* URL styling */
+	#completions .url {
+		color: var(--base0D);
+		font-family: monospace;
+	}
+	
+	/* Scrollbar styling */
+	#completions::-webkit-scrollbar {
+		width: 8px;
+	}
+	
+	#completions::-webkit-scrollbar-track {
+		background: var(--base00);
+	}
+	
+	#completions::-webkit-scrollbar-thumb {
+		background: var(--base0A);
+		border-radius: 4px;
+	}
+}
+
+/* Feature Coverage: Status indicators */
+@layer violet-void.components {
+	.TridactylStatusIndicator {
+		position: fixed !important;
+		bottom: 0 !important;
+		background: var(--tridactyl-bg) !important;
+		border: 1px solid var(--base0B) !important;
+		font-size: 12pt !important;
+		padding: 0.8ex !important;
+		color: var(--base05);
+		font-family: monospace;
+		z-index: 2147483647;
+	}
+	
+	/* Mode indicator styles */
+	.TridactylStatusIndicator::before {
+		content: '';
+	}
+	
+	/* Active/recording indicator */
+	.TridactylStatusIndicator.active {
+		border-color: var(--base0E) !important;
+		background: var(--base01) !important;
+	}
+	
+	/* Normal mode */
+	.TridactylStatusIndicator[mode="normal"] {
+		border-left: 3px solid var(--base0B);
+	}
+	
+	/* Insert mode */
+	.TridactylStatusIndicator[mode="insert"] {
+		border-left: 3px solid var(--base0A);
+	}
+	
+	/* Command mode */
+	.TridactylStatusIndicator[mode="cmdline"] {
+		border-left: 3px solid var(--base0E);
+	}
+	
+	/* Visual mode */
+	.TridactylStatusIndicator[mode="visual"] {
+		border-left: 3px solid var(--base0C);
+	}
+}
+
+/* Animation Options: Smooth transitions */
+@layer violet-void.utilities {
+	#cmdline_iframe {
+		transition: all 0.2s ease-out;
+	}
+	
+	.TridactylStatusIndicator {
+		transition: all 0.15s ease;
+	}
+	
+	/* Message flash animation */
+	#tridactyl-message {
+		animation: flash-message 0.3s ease-out;
+	}
+	
+	@keyframes flash-message {
+		from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 }
 
@@ -88,88 +342,7 @@
 	--tridactyl-hint-outline: none;
 }
 
-#command-line-holder {
-	order: 1;
-	border: 2px solid var(--base0B);
-	color: var(--tridactyl-bg);
-}
-
-#tridactyl-input {
-	padding: 1rem;
-	color: var(--tridactyl-fg);
-	width: 90%;
-	font-size: 1.5rem;
-	line-height: 1.5;
-	background: var(--tridactyl-bg);
-	padding-left: unset;
-}
-
-#completions table {
-	font-size: 0.8rem;
-	font-weight: 200;
-	border-spacing: 0;
-	table-layout: fixed;
-	padding: 1rem;
-}
-
-#completions > div {
-	max-height: calc(20 * var(--option-height));
-	min-height: calc(10 * var(--option-height));
-}
-
-#completions {
-	--option-height: 1.4em;
-	color: var(--tridactyl-fg);
-	background: var(--tridactyl-bg);
-	display: inline-block;
-	font-size: unset;
-	font-weight: 200;
-	overflow: hidden;
-	width: 100%;
-	border-top: unset;
-	order: 2;
-}
-
-#completions .HistoryCompletionSource,
-#completions .BmarkCompletionSource {
-	max-height: unset;
-	min-height: unset;
-}
-
-#completions .HistoryCompletionSource table,
-#completions .BufferCompletionSource table {
-	width: 100%;
-	font-size: 9pt;
-	border-spacing: 0;
-	table-layout: fixed;
-}
-
-#completions table tr td.prefix,
-#completions table tr td.privatewindow,
-#completions table tr td.container,
-#completions table tr td.icon {
-	display: none;
-}
-
-#completions table tr .title {
-	width: 50%;
-}
-
-#completions table tr {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-#completions .sectionHeader {
-	background: unset;
-	font-weight: 200;
-	border-bottom: unset;
-	padding: 1rem !important;
-	padding-left: unset;
-	padding-bottom: 0.2rem;
-}
-
+/* Command line iframe */
 #cmdline_iframe {
 	position: fixed !important;
 	top: 25% !important;
@@ -177,19 +350,4 @@
 	z-index: 2147483647 !important;
 	width: 80% !important;
 	box-shadow: rgba(0, 0, 0, 0.5) 0 0 20px !important;
-}
-
-.TridactylStatusIndicator {
-	position: fixed !important;
-	bottom: 0 !important;
-	background: var(--tridactyl-bg) !important;
-	border: 1px solid var(--base0B) !important;
-	font-size: 12pt !important;
-	padding: 0.8ex !important;
-}
-
-#completions .focused,
-#completions .focused .url {
-	background: var(--base0B);
-	color: var(--base00);
 }
